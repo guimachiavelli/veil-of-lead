@@ -1,0 +1,42 @@
+
+@font-face {
+    font-family: 'Jacques Francois';
+    src: url('../fonts/jacquesfrancois-regular-webfont.woff2') format('woff2'),
+         url('../fonts/jacquesfrancois-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background: black;
+    color: whitesmoke;
+    font-family: 'Jacques Francois', serif;
+    font-size: 18px;
+    max-width: 500px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+    background: lightyellow;
+}
+
+.menu__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu__item {
+    /*display: ;*/
+}
+
+

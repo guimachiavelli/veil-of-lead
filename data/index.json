@@ -1,0 +1,52 @@
+{
+    "title": "To Kiss the World through a Veil of Lead",
+    "pages": [
+        {
+            "title": "Front Page",
+            "template": "index",
+            "slug": "index",
+            "content": ""
+        },
+        {
+            "title": "Volume I",
+            "template": "volume",
+            "slug": "volume-1",
+            "downloads": [
+                {
+                    "type": "ePub",
+                    "file": "#"
+                },
+                {
+                    "type": "PDF",
+                    "file": "#"
+                },
+                {
+                    "type": "Audio",
+                    "file": "#"
+                }
+            ],
+            "children": {
+                "content_path": "volume-1.json"
+            }
+        },
+        {
+            "title": "Volume II",
+            "template": "volume",
+            "slug": "volume-2",
+            "downloads": [
+                {
+                    "type": "ePub",
+                    "file": "#"
+                },
+                {
+                    "type": "PDF",
+                    "file": "#"
+                }
+            ],
+            "children": {
+                "content_path": "volume-2.json"
+            }
+        }
+    ]
+}
+

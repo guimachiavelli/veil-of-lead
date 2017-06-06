@@ -1,0 +1,22 @@
+<main>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+
+    <aside>
+        <h2>Download</h2>
+        <ul>
+            {{ #downloads }}
+            <li><a href="#">{{ type }}</a></li>
+            {{ /downloads }}
+        </ul>
+    </aside>
+
+    <article>
+        <ol>
+            {{ #children }}
+            <li><a href="{{ parent }}/{{ slug }}.html">{{ title }}</a></li>
+            {{ /children }}
+        </ol>
+    </article>
+</main>

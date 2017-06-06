@@ -1,0 +1,16 @@
+{
+  "name": "veil-lead",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "gui machiavelli",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "chokidar-cli": "^1.2.0",
+    "marked": "^0.3.6",
+    "mustache": "^2.3.0",
+    "node-sass": "^4.5.3",
+    "postcss-cli": "^4.0.0"
+  }
+}
