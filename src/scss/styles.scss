@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'Jacques Francois';
     src: url('../fonts/jacquesfrancois-regular-webfont.woff2') format('woff2'),
@@ -7,25 +6,51 @@
     font-style: normal;
 }
 
+$base-size: 9px;
+$base-leading: 8px;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+
 body {
     background: black;
     color: whitesmoke;
     font-family: 'Jacques Francois', serif;
-    font-size: 18px;
+    font-size: $base-size * 2;
+    line-height: $base-leading * 3;;
     max-width: 500px;
-    margin: 0 auto;
-    -webkit-font-smoothing: antialiased;
+    margin: ($base-leading * 6) auto;
+    font-weight: normal;
 }
 
 a {
     color: whitesmoke;
     text-decoration: underline;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
-a:hover {
-    text-decoration: none;
-    color: black;
-    background: lightyellow;
+h1 {
+    font-size: $base-size * 2;
+    margin-bottom: $base-leading * 3;
+    text-align: center;
+    opacity: 0.15;
+}
+
+h2, h3, h4, h5 {
+    font-size: $base-size * 4;
+    line-height: $base-leading * 5;
+    margin-bottom: $base-leading * 6;
+}
+
+p {
+    margin-bottom: $base-leading * 3;
 }
 
 .menu__list {
@@ -33,10 +58,51 @@ a:hover {
     padding: 0;
     display: flex;
     justify-content: space-between;
+    margin-bottom: $base-leading * 12;
 }
 
-.menu__item {
-    /*display: ;*/
+.volume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: $base-leading * 3;
 }
 
+.volume-header__title {
+    display: inline-block;
+    margin: 0;
+}
 
+.download {
+    display: inline-block;
+    opacity: 0.15;
+}
+
+.download__list {
+    display: inline-block;
+}
+
+.download__item {
+    display: inline-block;
+}
+
+.stories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: ($base-leading * 3) * 5;
+    counter-reset: story;
+}
+
+.story {
+    counter-increment: story;
+    white-space: nowrap;
+    display: block;
+
+    &::before {
+        content: counter(story) '.';
+        opacity: 0.15;
+    }
+
+}

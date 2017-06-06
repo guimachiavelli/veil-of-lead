@@ -11,6 +11,7 @@
             "title": "Volume I",
             "template": "volume",
             "slug": "volume-1",
+            "content": "A spinning ball of fire, to be crushed to life, hear radiation stalking you, to be everywhere at the same time, dance with beams of radiation, to communicate through electromagnetic fields. Exhibited at Sandberg Institute's Design Department Graduation Show. Readings by André Lourenço, Angelo Custódio, Duncan Robertson and Thom Driver.",
             "downloads": [
                 {
                     "type": "ePub",
@@ -33,6 +34,7 @@
             "title": "Volume II",
             "template": "volume",
             "slug": "volume-2",
+            "content": "To drink dirt and unborn progeny, a slow orgasm, to be penetrated by a electricity and heat, a mix between pain and hearing, to stay still and feel pleasure, to be a wave, become alive through entropy, to touch something and feel even its molecules.",
             "downloads": [
                 {
                     "type": "ePub",
@@ -46,6 +48,12 @@
             "children": {
                 "content_path": "volume-2.json"
             }
+        },
+        {
+            "title": "About",
+            "template": "about",
+            "slug": "about",
+            "content": ""
         }
     ]
 }

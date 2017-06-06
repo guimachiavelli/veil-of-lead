@@ -1,21 +1,26 @@
 <main>
-    <header>
-        <h1>{{ title }}</h1>
+    <header class="volume-header">
+        <h2 class="volume-header__title">{{ title }}</h2>
+        <div class="download">
+            <ul class="download__list">
+                {{ #downloads }}
+                <li class="download__item">
+                    <a class="download__link" href="#">{{ type }}</a>
+                </li>
+                {{ /downloads }}
+            </ul>
+        </div>
     </header>
 
-    <aside>
-        <h2>Download</h2>
-        <ul>
-            {{ #downloads }}
-            <li><a href="#">{{ type }}</a></li>
-            {{ /downloads }}
-        </ul>
-    </aside>
+
 
     <article>
-        <ol>
+        <p>{{ content }}</p>
+        <ol class="stories">
             {{ #children }}
-            <li><a href="{{ parent }}/{{ slug }}.html">{{ title }}</a></li>
+            <li class="story">
+                <a href="{{ parent }}/{{ slug }}.html">{{ title }}</a>
+            </li>
             {{ /children }}
         </ol>
     </article>
