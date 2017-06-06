@@ -14,6 +14,8 @@ FONTS=$(wildcard $(SRC_DIR)/fonts/*.woff $(SRC_DIR)/fonts/*.woff2)
 DATA_DIR=./data
 DATA=$(wildcard $(DATA_DIR)/*.json)
 
+TEMPLATES=$(wildcard $(SRC_DIR)/js/templates/*.html)
+
 server:
 	ruby -run -e httpd ./public -v -p 8000
 
@@ -25,7 +27,7 @@ deploy:
 
 build: $(BUILD_DIR)/index.html assets
 
-$(BUILD_DIR)/index.html: $(DATA)
+$(BUILD_DIR)/index.html: $(DATA) $(TEMPLATES)
 	@cd ./src/js && node ./build-site.js
 
 assets: $(CSS_DIR)/styles.css fonts
