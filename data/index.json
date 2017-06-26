@@ -1,29 +1,29 @@
 {
-    "title": "To Kiss the World through a Veil of Lead",
+    "title": "To Kiss the World Through a Veil of Lead",
     "pages": [
         {
             "title": "Front Page",
             "template": "index",
             "slug": "index",
-            "content": ""
+            "content": "_To Kiss the World Through a Veil of Lead_ is a series of 45 short stories divided in three volumes and written by Gui Machiavelli. The texts try to imagine experiences that are alien to us, experiences that lie at the limit or even beyond what humans can feel and understand. Paraphrasing Thomas Nagel, these stories want to know “what it is like to be a bat”, an octopus, an infection, a planet, an erupting volcano. These stories want to believe in an empathy that is not simply a mirror, that is not painfully restricted to that which is like me."
         },
         {
             "title": "Volume I",
             "template": "volume",
             "slug": "volume-1",
-            "content": "A spinning ball of fire, to be crushed to life, hear radiation stalking you, to be everywhere at the same time, dance with beams of radiation, to communicate through electromagnetic fields. Exhibited at Sandberg Institute's Design Department Graduation Show. Readings by André Lourenço, Angelo Custódio, Duncan Robertson and Thom Driver.",
+            "content": "A spinning ball of fire; to be crushed to life; hear radiation stalking you; to be everywhere at the same time; dance with beams of radiation; to communicate through electromagnetic fields.\n\nExhibited at Sandberg Institute's Design Department Graduation Show. Audiobook with performances by André Lourenço, Angelo Custódio, Duncan Robertson and Thom Driver.",
             "downloads": [
                 {
                     "type": "ePub",
-                    "file": "#"
+                    "file": "volume-1.epub"
                 },
                 {
                     "type": "PDF",
-                    "file": "#"
+                    "file": "volume-1.pdf"
                 },
                 {
-                    "type": "Audio",
-                    "file": "#"
+                    "type": "Audiobook",
+                    "file": "volume-1.zip"
                 }
             ],
             "children": {
@@ -34,15 +34,15 @@
             "title": "Volume II",
             "template": "volume",
             "slug": "volume-2",
-            "content": "To drink dirt and unborn progeny, a slow orgasm, to be penetrated by a electricity and heat, a mix between pain and hearing, to stay still and feel pleasure, to be a wave, become alive through entropy, to touch something and feel even its molecules.",
+            "content": "To drink dirt and unborn progeny; a slow orgasm; to be penetrated by a electricity and heat,; a mix between pain and hearing, to stay still in order to feel pleasure; become alive through entropy; to touch something and be overwhelmed by extreme sensitivity.",
             "downloads": [
                 {
                     "type": "ePub",
-                    "file": "#"
+                    "file": "volume-2.epub"
                 },
                 {
                     "type": "PDF",
-                    "file": "#"
+                    "file": "volume-2.pdf"
                 }
             ],
             "children": {
@@ -50,10 +50,16 @@
             }
         },
         {
+            "title": "Volume III",
+            "template": "page",
+            "slug": "volume-3",
+            "content": "Soon."
+        },
+        {
             "title": "About",
             "template": "about",
             "slug": "about",
-            "content": ""
+            "content": "_To Kiss the World Through a Veil of Lead_ was written by [Gui Machiavelli](https://guimachiavelli.com) in 2017, as his graduation project at the [Sandberg Institute](http://sandberg.nl). They all follow very strict rules: 300 words, a 2nd person narrator and a focus in one experience or sensation felt by a non-human being.\n\nBesides written text, the work has also been exhibited as an installation consisting of a dark room where viewers could listen to the stories being read over a background of silence and algorithmmically generated sounds. This exhibition took place at [Shelter Amsterdam](https://shelteramsterdam.nl/) as part of the Sandberg's Design Department graduation show. \n\nWith the deepest thanks to the guidance of [Daniel van der Velden](http://metahaven.net), [Filippo Taveri](http://pitaveri.com), [Jesse Darling](http://bravenewwhat.org) and Rob Schröder. A special thanks to André Lourenço, [Angelo Custódio](http://angelocustodio.com), [Duncan Robertson](http://www.duncanrobertson.info/), [Mavi Veloso](http://maviveloso.tumblr.com), Niccolò Borgia and Thom Driver — the readers — for having dedicated their time to collaborate on this project."
         }
     ]
 }

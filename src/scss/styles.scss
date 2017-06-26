@@ -1,13 +1,26 @@
 @font-face {
-    font-family: 'Jacques Francois';
-    src: url('../fonts/jacquesfrancois-regular-webfont.woff2') format('woff2'),
-         url('../fonts/jacquesfrancois-regular-webfont.woff') format('woff');
+    font-family: 'Baskerville';
+    src: url('../fonts/librebaskerville-regular-webfont.woff2') format('woff2'),
+         url('../fonts/librebaskerville-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
-$base-size: 9px;
-$base-leading: 8px;
+@font-face {
+    font-family: 'Baskerville';
+    src: url('../fonts/librebaskerville-italic-webfont.woff2') format('woff2'),
+         url('../fonts/librebaskerville-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+$base-size: 8px;
+$base-leading: 10px;
+
+$black: black;
+$grey: rgba(255,255,255,0.2);
+$green: greenyellow;
+$white: #ddd;
 
 * {
     margin: 0;
@@ -17,36 +30,50 @@ $base-leading: 8px;
 
 
 body {
-    background: black;
-    color: whitesmoke;
-    font-family: 'Jacques Francois', serif;
+    background: $black;
+    color: $white;
+    font-family: 'Baskerville', serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 1px;
+    margin: ($base-leading * 6) 1.25em;
+
     font-size: $base-size * 2;
     line-height: $base-leading * 3;;
-    max-width: 500px;
-    margin: ($base-leading * 6) auto;
-    font-weight: normal;
 }
 
 a {
-    color: whitesmoke;
-    text-decoration: underline;
+    color: $white;
+    text-decoration: none;
+    border-bottom: 1px solid whitesmoke;
 
     &:hover {
         text-decoration: none;
+        border: 0;
     }
 }
 
-h1 {
+::selection {
+    background: $green;
+    color: $black;
+}
+
+.site-title {
     font-size: $base-size * 2;
     margin-bottom: $base-leading * 3;
     text-align: center;
-    opacity: 0.15;
+    color: $grey;
 }
 
-h2, h3, h4, h5 {
-    font-size: $base-size * 4;
+.volume-header__title,
+.single__title {
+    font-size: $base-size * 2;
+    text-transform: uppercase;
     line-height: $base-leading * 5;
-    margin-bottom: $base-leading * 6;
+    margin-bottom: $base-leading * 3;
+    text-align: center;
+    letter-spacing: 6px;
+    white-space: nowrap;
 }
 
 p {
@@ -56,53 +83,213 @@ p {
 .menu__list {
     list-style: none;
     padding: 0;
-    display: flex;
-    justify-content: space-between;
     margin-bottom: $base-leading * 12;
+    text-align: center;
+    line-height: $base-leading * 4;
+}
+
+.menu__item {
+    display: inline-block;
+    margin-right: 0.5em;
 }
 
 .volume-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: $base-leading * 3;
+    margin-bottom: $base-leading * 6;
+    text-align: center;
 }
 
 .volume-header__title {
-    display: inline-block;
     margin: 0;
+    line-height: $base-leading * 3;
 }
 
-.download {
-    display: inline-block;
-    opacity: 0.15;
-}
 
 .download__list {
-    display: inline-block;
+    display: block;
+    text-align: center;
 }
 
 .download__item {
     display: inline-block;
+    margin-right: 0.5em;
+}
+
+.download__link {
+    color: $grey;
+    border-bottom-color: $grey;
+}
+
+.volume-content {
+    margin-bottom: $base-leading * 5;
 }
 
 .stories {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: ($base-leading * 3) * 5;
     counter-reset: story;
 }
 
 .story {
     counter-increment: story;
-    white-space: nowrap;
     display: block;
+    text-align: center;
+    margin-bottom: $base-leading * 4;
+}
+
+.story__link {
+    display: inline-block;
+    line-height: 1.5;
 
     &::before {
-        content: counter(story) '.';
-        opacity: 0.15;
+        content: counter(story, upper-roman) '';
+        display: block;
+        color: $grey;
+    }
+}
+
+.single {
+    &::after {
+        content: '♦︎';
+        text-align: center;
+        display: block;
+        color: $grey;
+    }
+}
+
+.player {
+    position: relative;
+}
+
+.player__button {
+    text-align: center;
+    width: 100%;
+
+    label {
+        display: block;
+        font-size: 0;
+        color: $grey;
+        cursor: pointer;
+        line-height: 0;
+
+        &::before {
+            display: block;
+            content: 'Listen';
+            font-size: $base-size * 2;
+            line-height: $base-leading * 5;
+        }
+
+        &:hover::before {
+            border: 0;
+        }
     }
 
+    input:checked + label {
+        &::before {
+            content: 'Stop';
+        }
+    }
+
+    input {
+        opacity: 0;
+        position: absolute;
+    }
+}
+
+.player__progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: $grey;
+    color: $green;
+}
+
+.player__progress[value]::-webkit-progress-bar {
+    background: $grey;
+    background: transparent;
+}
+
+.player__progress[value]::-moz-progress-bar {
+    background: $green;
+}
+
+.player__progress[value]::-webkit-progress-value {
+    background: $green;
+}
+
+@media (min-width: 600px) {
+    body {
+        font-size: $base-size * 2;
+        line-height: $base-leading * 3;;
+        max-width: 550px;
+        margin: ($base-leading * 6) auto;
+    }
+
+    .site-title {
+        margin-bottom: $base-leading * 2;
+    }
+
+    .menu__list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .menu__item {
+        margin-right: 0;
+    }
+
+    .volume-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .volume-header__title {
+        display: inline-block;
+        margin: 0;
+        line-height: $base-leading * 3;
+        letter-spacing: 15px;
+    }
+
+    .volume-header__title,
+    .single__title {
+        margin-bottom: $base-leading * 4;
+    }
+
+    .volume-content {
+        margin-bottom: $base-leading * 6;
+    }
+
+    .download {
+        display: inline-block;
+    }
+
+    .download__list {
+        display: inline-block;
+    }
+
+    .download__item {
+        margin-left: 0.5em;
+    }
+
+    .stories {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .story {
+        flex-basis: 33%;
+        margin-bottom: $base-leading * 6;
+    }
+
+    .player__button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 70px;
+    }
 }

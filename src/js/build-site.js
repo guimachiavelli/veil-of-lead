@@ -7,20 +7,20 @@ let fs = require('fs'),
     mustache = require('mustache');
 
 const TPL = {
-    index: fs.readFileSync('./templates/index.html', {encoding: 'utf-8'}),
-    about: fs.readFileSync('./templates/about.html', {encoding: 'utf-8'}),
+    page: fs.readFileSync('./templates/page.html', {encoding: 'utf-8'}),
     story: fs.readFileSync('./templates/story.html', {encoding: 'utf-8'}),
     volume: fs.readFileSync('./templates/volume.html', {encoding: 'utf-8'}),
     header: fs.readFileSync('./templates/header.html', {encoding: 'utf-8'}),
     footer: fs.readFileSync('./templates/footer.html', {encoding: 'utf-8'})
 };
 
-function pageHTML(data, header, footer) {
-    data.html = mustache.render(header + TPL.about  + footer, data);
+function pageHTML(data) {
+    data.content = marked(data.content);
+    data.html = mustache.render(TPL.page, data);
     return data;
 }
 
-function volumeHTML(data, header, footer) {
+function volumeHTML(data) {
     let stories;
 
     stories = fs.readFileSync(`../../data/${data.children.content_path}`,
@@ -30,47 +30,47 @@ function volumeHTML(data, header, footer) {
     stories = stories.map(function(story){
         story.parent = data.slug;
         story.slug = story.title.toLowerCase().replace(/\s+/, '-');
-        story.content = story.content.replace(/\n+/, '\n').split('\n');
-        story.content = story.content.filter(function(p) { return p; });
-        story.html = mustache.render(header + TPL.story + footer, story);
+        story.content = marked(story.content);
+        story.html = mustache.render(TPL.story, story);
         return story;
     });
 
     data.children = stories;
-    data.html = mustache.render(header + TPL.volume  + footer, data);
+    data.html = mustache.render(TPL.volume, data);
 
-    return data;
-}
-
-function indexHTML(data, header, footer) {
-    data.html = mustache.render(header + TPL.index  + footer, data);
     return data;
 }
 
 function generateHTML(site) {
-    let pages, header, footer;
-
-    header = mustache.render(TPL.header, site);
-    footer = mustache.render(TPL.footer);
+    let pages;
 
     pages = site.pages.map(function(page){
         switch (page.template) {
-            case 'index':
-                return indexHTML(page, header, footer);
-                break;
             case 'volume':
-                return volumeHTML(page, header, footer);
+                return volumeHTML(page);
                 break;
             default:
-                return pageHTML(page, header, footer);
+                return pageHTML(page);
                 break;
         }
     });
 
     let counter = 0;
     pages.forEach(function(page) {
+        let headerData, header, footer;
+
         if (page === null) {
             return;
+        }
+
+        headerData = {
+            title: `${page.title} — ${site.title}`,
+            heading: site.title,
+            pages: site.pages
+        };
+
+        if (page.template === 'index') {
+            headerData.title = site.title;
         }
 
         counter += 1;
@@ -78,16 +78,36 @@ function generateHTML(site) {
 
         if (page.children) {
             page.children.forEach(function(story){
-                let parent = `../../public/${page.slug}`;
+                let parent, headerData, description;
+
+                parent = `../../public/${page.slug}`;
+
                 if (!fs.existsSync(parent)) {
                     fs.mkdirSync(`../../public/${page.slug}`);
                 }
 
                 counter += 1;
+
+                headerData = {
+                    title: `${story.title} — ${site.title}`,
+                    heading: site.title,
+                    pages: site.pages
+                };
+
+                console.log(headerData.description);
+
+                header = mustache.render(TPL.header, headerData);
+                footer = mustache.render(TPL.footer);
+                story.html = header + story.html + footer;
+
                 console.log(`Generating '${page.title}/${story.title}' page`);
                 fs.writeFileSync(`${parent}/${story.slug}.html`, story.html);
             });
         }
+
+        header = mustache.render(TPL.header, headerData);
+        footer = mustache.render(TPL.footer);
+        page.html = header + page.html + footer;
 
         fs.writeFileSync(`../../public/${page.slug}.html`, page.html);
     });

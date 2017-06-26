@@ -5,21 +5,19 @@
             <ul class="download__list">
                 {{ #downloads }}
                 <li class="download__item">
-                    <a class="download__link" href="#">{{ type }}</a>
+                    <a class="download__link" href="/assets/downloads/{{ file }}">{{ type }}</a>
                 </li>
                 {{ /downloads }}
             </ul>
         </div>
     </header>
 
-
-
     <article>
-        <p>{{ content }}</p>
+        <p class="volume-content">{{ content }}</p>
         <ol class="stories">
             {{ #children }}
             <li class="story">
-                <a href="{{ parent }}/{{ slug }}.html">{{ title }}</a>
+                <a class="story__link" href="{{ parent }}/{{ slug }}.html">{{ title }}</a>
             </li>
             {{ /children }}
         </ol>

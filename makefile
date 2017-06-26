@@ -23,17 +23,20 @@ setup: ./package.json
 	@npm install
 
 deploy:
-	rsync --verbose --progress -r $(BUILD_DIR) $(DEPLOY_TARGET)
+	rsync --verbose --progress -r $(BUILD_DIR)/* $(DEPLOY_TARGET)
 
 build: $(BUILD_DIR)/index.html assets
 
 $(BUILD_DIR)/index.html: $(DATA) $(TEMPLATES)
 	@cd ./src/js && node ./build-site.js
 
-assets: $(CSS_DIR)/styles.css fonts
+assets: $(CSS_DIR)/styles.css fonts downloads
 
 fonts: $(FONTS)
 	@cp -R ./src/fonts ./public/assets
+
+downloads:
+	@cp -R ./src/downloads ./public/assets
 
 develop: $(SRC_DIR)
 	@$(BIN)/chokidar $(SASS_DIR) $(DATA_DIR) -c '${MAKE} build' $<

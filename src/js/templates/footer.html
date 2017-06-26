@@ -1,2 +1,36 @@
+
+    <script>
+        var player = {
+            init: function() {
+                var player, audio, button, checkbox, progress;
+                player = document.querySelector('.player');
+
+                if (player === null) {
+                    return;
+                }
+
+                audio = player.querySelector('audio');
+
+                button = player.querySelector('.player__button');
+                progress = player.querySelector('.player__progress');
+                checkbox = button.querySelector('input');
+
+                button.addEventListener('change', function(){
+                    if (checkbox.checked === true) {
+                        audio.play();
+                        return;
+                    }
+                    audio.pause();
+                });
+
+                audio.addEventListener('timeupdate', function(event) {
+                    progress.value = ((audio.currentTime/900) * 100) + 1;
+                });
+            }
+
+        };
+
+        player.init();
+    </script>
     </body>
 </html>

@@ -1,7 +1,25 @@
 <main>
-    <h2>{{ title }}</h2>
+    <article class="single">
+        <aside class="player">
+            {{ #audio }}
+            <audio class="player__audio">
+                <source src="/assets/audio/{{ slug }}.mp3" type="audio/mp3">
+                <source src="/assets/audio/{{ slug }}.ogg" type="audio/ogg">
+            </audio>
+            <form class="player__button">
+                <input id="play" type="checkbox">
+                <label for="play">Click to play</label>
+            </form>
+            <progress class="player__progress" value="0" max="100"></progress>
+            {{ /audio }}
+        </aside>
 
-    {{ #content }}
-        <p>{{ . }}</p>
-    {{ /content }}
+        <header>
+            <h1 class="single__title">{{ title }}</h1>
+        </header>
+
+        <div class="single__content">
+            {{{ content }}}
+        </div>
+    </article>
 </main>
